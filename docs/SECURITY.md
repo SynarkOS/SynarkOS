@@ -15,7 +15,7 @@ If you discover a security vulnerability, please follow these steps:
 Security vulnerabilities should never be disclosed publicly until they are resolved.
 
 ### 2. Report via Email
-Send details to: **synarkos@example.com**
+Send details to: **synarkos@proton.me**
 
 Include:
 - Description of the vulnerability
@@ -77,4 +77,4 @@ Currently evaluating bug bounty program. Stay tuned!
 
 ## Contact
 
-Security Team: synarkos@example.com
+Security Team: synarkos@proton.me
