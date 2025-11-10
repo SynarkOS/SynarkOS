@@ -1,0 +1,476 @@
+docs_dir: '.'  # replace with the correct path if your documentation files are not in the same directory as mkdocs.yml
+site_name: SynarkOS
+site_url: https://docs.synarkos.world
+site_author: SynarkOS
+site_description: The Enterprise-Grade Production-Ready Multi-Agent Orchestration Framework
+repo_name: synarkos/synarkos
+repo_url: https://github.com/synarkos/synarkos
+edit_uri: https://github.com/synarkos/synarkos/tree/main/docs
+copyright: TGSC Corp 2024. All rights reserved.
+
+plugins:
+  # - glightbox
+  - search
+  - git-authors
+  - mkdocs-jupyter:
+        kernel_name: python3
+        execute: false
+        include_source: True
+        include_requirejs: true
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          options:
+            parameter_headings: true
+            paths: [supervision]
+            load_external_modules: true
+            allow_inspection: true
+            show_bases: true
+            group_by_category: true
+            docstring_style: google
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            show_category_heading: true
+  - git-committers:
+      repository: synarkos/synarkos
+      branch: master
+      # token: !ENV ["GITHUB_TOKEN"]
+  - git-revision-date-localized:
+      enable_creation_date: true
+extra_css:
+  - assets/css/extra.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/twitter
+      link: https://x.com/synarkos_corp
+    - icon: fontawesome/brands/github
+      link: https://github.com/synarkos/synarkos
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/EamjgSaEQf
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/@synarkos3242
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/synarkos-corp/
+
+  footer_links:
+    
+    "Quick Start":
+      - title: "Installation"
+        url: "https://docs.synarkos.world/en/latest/synarkos/install/install/"
+      - title: "Quickstart Guide"
+        url: "https://docs.synarkos.world/en/latest/quickstart/"
+      - title: "Environment Setup"
+        url: "https://docs.synarkos.world/en/latest/synarkos/install/env/"
+      - title: "Basic Agent Example"
+        url: "https://docs.synarkos.world/en/latest/synarkos/examples/basic_agent/"
+
+    "Core Capabilities":
+      - title: "Agents"
+        url: "https://docs.synarkos.world/en/latest/synarkos/structs/agent/"
+      - title: "Multi-Agent Architectures"
+        url: "https://docs.synarkos.world/en/latest/synarkos/concept/swarm_architectures/"
+      - title: "LLM Providers"
+        url: "https://docs.synarkos.world/en/latest/synarkos/examples/model_providers/"
+      - title: "Swarm Router"
+        url: "https://docs.synarkos.world/en/latest/synarkos/structs/swarm_router/"
+
+    "Advanced Concepts":
+      - title: "MALT (Multi-Agent Learning Task)"
+        url: "https://github.com/synarkos/synarkos/blob/master/examples/single_agent/reasoning_agent_examples/malt_example.py"
+      - title: "MAI-DxO (Medical AI Diagnosis)"
+        url: "https://github.com/The-Swarm-Corporation/Open-MAI-Dx-Orchestrator"
+      - title: "AI-CoScientist Research Framework"
+        url: "https://github.com/The-Swarm-Corporation/AI-CoScientist"
+      - title: "Agent-as-a-Judge Evaluation"
+        url: "https://github.com/synarkos/synarkos/blob/master/examples/single_agent/reasoning_agent_examples/agent_judge_example.py"
+      - title: "Research Papers Collection"
+        url: "https://github.com/synarkos/awesome-multi-agent-papers"
+
+
+    "Tools":
+      - title: "Tools and MCP"
+        url: "https://docs.synarkos.world/en/latest/synarkos/tools/tools_examples/"
+      - title: "OpenAI Tools & Function Calling"
+        url: "https://docs.synarkos.world/en/latest/synarkos/examples/agent_structured_outputs/"
+      - title: "Web Search (Exa, Serper)"
+        url: "https://docs.synarkos.world/en/latest/synarkos_tools/search/"
+      - title: "Vision & Image Processing"
+        url: "https://docs.synarkos.world/en/latest/synarkos/examples/vision_processing/"
+      - title: "Browser Automation"
+        url: "https://docs.synarkos.world/en/latest/synarkos/examples/synarkos_of_browser_agents/"
+      - title: "Crypto APIs (CoinGecko, HTX)"
+        url: "https://docs.synarkos.world/en/latest/synarkos/examples/agent_with_tools/"
+      - title: "Yahoo Finance"
+        url: "https://docs.synarkos.world/en/latest/synarkos/examples/yahoo_finance/"
+
+    "Use Cases":
+      - title: "Examples Overview"
+        url: "https://docs.synarkos.world/en/latest/examples/index/"
+      - title: "Templates & Applications"
+        url: "https://docs.synarkos.world/en/latest/examples/templates/"
+      - title: "Financial Analysis SynarkOS"
+        url: "https://docs.synarkos.world/en/latest/synarkos/examples/synarkos_api_finance/"
+      - title: "Medical Diagnosis Systems"
+        url: "https://docs.synarkos.world/en/latest/synarkos/examples/synarkos_api_medical/"
+      - title: "DAO Governance"
+        url: "https://docs.synarkos.world/en/latest/synarkos/examples/synarkos_dao/"
+      - title: "All Examples Repository"
+        url: "https://github.com/synarkos/synarkos/tree/master/examples"
+
+  analytics:
+    provider: google
+    property: G-MPE9C65596
+
+theme:
+  name: material
+  custom_dir: overrides
+  logo: assets/img/synarkos-logo.png
+  palette:
+    - scheme: default
+      primary: white      # White background
+      accent: white       # Black accents for interactive elements
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate       # Optional: lighter shades for accessibility
+      primary: black
+      accent: black
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - content.code.copy
+    - content.code.annotate
+    - navigation.tabs
+    - navigation.sections
+    # - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - announce.dismiss
+  font:
+    text: "Fira Sans"      # Clean and readable text
+    code: "Fira Code"      # Modern look for code snippets
+
+
+# Extensions
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      auto_append:
+        - includes/mkdocs.md
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.inlinehilite
+
+nav:
+  # - Home:
+  #   - Overview: "quickstart.md"
+  #   - Installation: "synarkos/install/install.md"
+  #   - Environment Configuration: "synarkos/install/env.md"
+  #   - Agents: "synarkos/agents/index.md"
+  #   - Multi-Agent Architectures: "synarkos/structs/index.md"
+
+  - Home:
+    - Overview: "index.md"
+    - Onboarding: 
+      - Installation: "synarkos/install/install.md"
+      - Environment Configuration: "synarkos/install/env.md"
+      - Quickstart: "quickstart.md"
+      - Agents: "synarkos/agents/index.md"
+      - Multi-Agent Architectures: "synarkos/structs/index.md"
+    
+    - Protocol:
+      - Overview: "protocol/overview.md"
+      - SIPs: "protocol/sip.md"
+      - Feature Set: "synarkos/features.md"
+      - SynarkOS Ecosystem: "synarkos/ecosystem.md"
+      - Technical Support: "synarkos/support.md"
+    
+    
+    - Agents:
+      - Overview: "synarkos/framework/agents_explained.md"
+      - Quickstart: "synarkos/agents/index.md"
+      - Reference: "synarkos/structs/agent.md"
+      - Tools and MCP: "synarkos/tools/tools_examples.md"
+      - Multi-Agent Helpers: "synarkos/structs/agent_multi_agent_communication.md"
+      
+      - Capabilities:
+        - Fallback Models: "synarkos/utils/fallback_models.md"
+        - Running Agents with YAML: "synarkos/agents/create_agents_yaml.md"
+        - Tools Reference:
+          - Overview: "synarkos/tools/main.md"
+          - What are tools?: "synarkos/tools/build_tool.md"
+          - Structured Outputs: "synarkos/agents/structured_outputs.md"
+          - Agent MCP Integration: "synarkos/structs/agent_mcp.md"
+        - Long Term Memory Reference:
+          - Integrating RAG with Agents: "synarkos/memory/diy_memory.md"
+        
+    - Third-Party Agents:
+      - Creating Custom Agents: "synarkos/agents/new_agent.md"
+      - OpenAI Assistant: "synarkos/agents/openai_assistant.md"
+      - Integrating External Agents from Griptape, Langchain, etc: "synarkos/agents/external_party_agents.md"
+    
+    - Reasoning Agents:
+      - Overview: "synarkos/agents/reasoning_agents_overview.md"
+      - Self Consistency Agent: "synarkos/agents/consistency_agent.md"
+      - IRE Agent: "synarkos/agents/iterative_agent.md"
+      - Reasoning Duo: "synarkos/agents/reasoning_duo.md"
+      - Reflexion Agent: "synarkos/agents/reflexion_agent.md"
+      - GKP Agent: "synarkos/agents/gkp_agent.md"
+      - Agent Judge: "synarkos/agents/agent_judge.md"
+      - Reasoning Agent Router: "synarkos/agents/reasoning_agent_router.md"
+    
+    - Multi-Agent Architectures:
+      - Overview: "synarkos/concept/swarm_architectures.md"
+      - Benefits: "synarkos/concept/why.md"
+      - Choosing Multi Agent Architecture: "synarkos/concept/how_to_choose_synarkos.md"
+
+      - Reference Documentation:
+        - Overview: "synarkos/structs/overview.md"
+        - Custom Multi Agent Architectures: "synarkos/structs/custom_swarm.md"
+        - Debate Multi-Agent Architectures: "synarkos/structs/orchestration_methods.md"
+        - MajorityVoting: "synarkos/structs/majorityvoting.md"
+        - RoundRobin: "synarkos/structs/round_robin_swarm.md"
+        - Mixture of Agents: "synarkos/structs/moa.md"
+        - SelfMoASeq: "synarkos/structs/self_moa_seq.md"
+        - SpreadSheetSwarm: "synarkos/structs/spreadsheet_swarm.md"
+        - ForestSwarm: "synarkos/structs/forest_swarm.md"
+        - MALT: "synarkos/structs/malt.md"
+        - Multi-Agent Execution Utilities: "synarkos/structs/various_execution_methods.md"
+        - Council of Judges: "synarkos/structs/council_of_judges.md"
+        - Heavy Swarm: "synarkos/structs/heavy_swarm.md"
+        - Social Algorithms: "synarkos/structs/social_algorithms.md"
+
+        - Hiearchical Architectures:
+          - Overview: "synarkos/structs/multi_swarm_orchestration.md"
+          - HierarchicalSwarm: "synarkos/structs/hierarchical_swarm.md"
+          - Hierarchical Structured Communication Framework: "synarkos/structs/hierarchical_structured_communication_framework.md"
+          - Hybrid Hierarchical-Cluster Swarm: "synarkos/structs/hhcs.md"
+          - Auto Swarm Builder: "synarkos/structs/auto_swarm_builder.md"
+          - Swarm Matcher: "synarkos/structs/swarm_matcher.md"
+          - Board of Directors: "synarkos/structs/BoardOfDirectors.md"
+
+
+        - Routers:
+          - SwarmRouter: "synarkos/structs/swarm_router.md"
+          - MultiAgentRouter: "synarkos/structs/multi_agent_router.md"
+          - AgentRouter: "synarkos/structs/agent_router.md"
+          - ModelRouter: "synarkos/structs/model_router.md"
+
+
+        - Rearrangers:
+          - SwarmRearrange: "synarkos/structs/swarm_rearrange.md"
+          - AgentRearrange: "synarkos/structs/agent_rearrange.md"
+
+        - GroupChats:
+          - GroupChat: "synarkos/structs/group_chat.md"
+          - Interactive Group Chat: "synarkos/structs/interactive_groupchat.md"
+
+        - Workflows:
+          - ConcurrentWorkflow: "synarkos/structs/concurrentworkflow.md"
+          - SequentialWorkflow: "synarkos/structs/sequential_workflow.md"
+          - GraphWorkflow: "synarkos/structs/graph_workflow.md"
+          - BatchedGridWorkflow: "synarkos/structs/batched_grid_workflow.md"
+
+        - Communication Structure: "synarkos/structs/conversation.md"
+
+    - Utilities:
+      - CLI Reference: "synarkos/cli/cli_reference.md"
+      - Agent Loader: "synarkos/utils/agent_loader.md"
+      - AgentRegistry: "synarkos/structs/agent_registry.md"
+
+    - Tools:
+      - Overview: "synarkos_tools/overview.md"
+      - BaseTool Reference: "synarkos/tools/base_tool.md"
+      - MCP Client Utils: "synarkos/tools/mcp_client_call.md"
+
+      - Vertical Tools:
+        - Finance: "synarkos_tools/finance.md"
+        - Search: "synarkos_tools/search.md"
+        - Social Media:
+          - Twitter: "synarkos_tools/twitter.md"
+
+
+    - Deployment Solutions:
+      - Overview: "deployment_solutions/overview.md"
+      - FastAPI + Uvicorn: "deployment_solutions/fastapi_agent_api.md"
+      - CronJob: "synarkos/structs/cron_job.md"
+      - Agent on MCP: "examples/mcp_ds.md"
+      - Providers:
+        - Deploy on Google Cloud Run: "synarkos_cloud/cloud_run.md"
+        - Deploy on Phala: "synarkos_cloud/phala_deploy.md"
+        - Deploy on Cloudflare Workers: "synarkos_cloud/cloudflare_workers.md"
+      - Agent Orchestration Protocol (AOP):
+        - AOP Reference: "synarkos/structs/aop.md"
+        - AOP Server Setup: "synarkos/examples/aop_server_example.md"
+        - AOP Cluster Example: "synarkos/examples/aop_cluster_example.md"
+
+    
+  - Examples:
+    - Overview: "examples/index.md"
+    - CookBook Index: "examples/cookbook_index.md"
+    - Paper Implementations: "examples/paper_implementations.md"
+    - Templates & Applications: "examples/templates.md"
+    - Community Resources: "examples/community_resources.md"
+    - CLI Examples: "synarkos/cli/cli_examples.md"
+
+    - Basic Examples:
+      - Individual Agents:
+        - Basic Agent: "synarkos/examples/basic_agent.md"
+        - Tool Usage:
+          - Agents with Vision and Tool Usage: "synarkos/examples/vision_tools.md"
+          - Agents with Callable Tools: "synarkos/examples/agent_with_tools.md"
+          - Agent with Structured Outputs: "synarkos/examples/agent_structured_outputs.md"
+          - Message Transforms for Context Management: "synarkos/structs/transforms.md"
+        - Vision:
+          - Agents with Vision: "synarkos/examples/vision_processing.md"
+          - Agent with Multiple Images: "synarkos/examples/multiple_images.md"
+        - Utils:
+          - Agent with Streaming: "examples/agent_stream.md"
+          - Agent Output Types: "synarkos/examples/agent_output_types.md"
+          - Gradio Chat Interface: "synarkos/ui/main.md"
+          - Agent with Gemini Nano Banana: "synarkos/examples/jarvis_agent.md"
+        - LLM Providers:
+          - Language Models:
+            - Overview: "synarkos/examples/model_providers.md"
+            - OpenAI: "synarkos/examples/openai_example.md"
+            - Anthropic: "synarkos/examples/claude.md"
+            - Groq: "synarkos/examples/groq.md"
+            - Cohere: "synarkos/examples/cohere.md"
+            - DeepSeek: "synarkos/examples/deepseek.md"
+            - Ollama: "synarkos/examples/ollama.md"
+            - OpenRouter: "synarkos/examples/openrouter.md"
+            - XAI: "synarkos/examples/xai.md"
+            - Azure OpenAI: "synarkos/examples/azure.md"
+            - VLLM: "synarkos/examples/vllm_integration.md"
+            - Llama4: "synarkos/examples/llama4.md"
+            - Custom Base URL & API Keys: "synarkos/examples/custom_base_url_example.md"
+
+
+
+    - Advanced Examples:
+      - Multi-Agent Architectures:
+        - HierarchicalSwarm Examples: "synarkos/examples/hierarchical_swarm_example.md"
+        - Hybrid Hierarchical-Cluster Swarm Example: "synarkos/examples/hhcs_examples.md"
+        - Group Chat Example: "synarkos/examples/groupchat_example.md"
+        - Sequential Workflow Example: "synarkos/examples/sequential_example.md"
+        - SwarmRouter Example: "synarkos/examples/swarm_router.md"
+        - MultiAgentRouter Minimal Example: "synarkos/examples/multi_agent_router_minimal.md"
+        - ConcurrentWorkflow Example: "synarkos/examples/concurrent_workflow.md"
+        - Mixture of Agents Example: "synarkos/examples/moa_example.md"
+        - Unique SynarkOS: "synarkos/examples/unique_synarkos.md"
+        - Agents as Tools: "synarkos/examples/agents_as_tools.md"
+        - Aggregate Multi-Agent Responses: "synarkos/examples/aggregate.md"
+        - Interactive GroupChat Example: "synarkos/examples/igc_example.md"
+        - BatchedGridWorkflow Examples:
+          - Simple BatchedGridWorkflow: "synarkos/examples/batched_grid_simple_example.md"
+          - Advanced BatchedGridWorkflow: "synarkos/examples/batched_grid_advanced_example.md"
+        - Applications:
+          - SynarkOS of Browser Agents: "synarkos/examples/synarkos_of_browser_agents.md"
+          - ConcurrentWorkflow with VLLM Agents: "synarkos/examples/vllm.md"
+          - Hiearchical Marketing Team: "examples/marketing_team.md"
+          - Gold ETF Research with HeavySwarm: "examples/gold_etf_research.md"
+          - Hiring Swarm: "examples/hiring_swarm.md"
+          - Advanced Research: "examples/av.md"
+          - Real Estate Swarm: "examples/realestate_swarm.md"
+          - Job Finding Swarm: "examples/job_finding.md"
+          - Mergers & Aquisition (M&A) Advisory Swarm: "examples/ma_swarm.md"
+    
+    - Tools & Integrations:
+      - Web Search with Exa: "examples/exa_search.md"
+      - Browser Use: "examples/browser_use.md"
+      - Yahoo Finance: "synarkos/examples/yahoo_finance.md"
+      - Firecrawl: "developer_guides/firecrawl.md"
+      
+      - MCP: 
+        - Multi-MCP Agent Integration: "synarkos/examples/multi_mcp_agent.md"
+
+    - RAG:
+      - RAG with Qdrant: "synarkos/RAG/qdrant_rag.md"
+
+    - Apps:
+      - Web Scraper Agents: "developer_guides/web_scraper.md"
+      - Smart Database: "examples/smart_database.md"
+      
+    - AOP:
+      - Medical AOP Example: "examples/aop_medical.md"
+
+    - X402:
+      - x402 Quickstart Example: "examples/x402_payment_integration.md"
+
+
+  - SynarkOS Cloud API:
+    - Overview: "synarkos_cloud/migration.md"
+
+
+  - SynarkOS Marketplace:
+    - Overview: "synarkos_platform/index.md"
+    - Marketplace:
+      - Share and Discover Agents, Prompts, and Tools: "synarkos_platform/share_and_discover.md"
+      - Monetize Your Prompts, Agents, and Tools: "synarkos_platform/monetize.md"
+    - Platform:
+      - Customize Your Sidebar: "synarkos_platform/apps_page.md"
+      - Playground: "synarkos_platform/playground_page.md"
+      - API Key Management: "synarkos_platform/apikeys.md"
+      - Account Management: "synarkos_platform/account_management.md"
+
+  - SynarkOS Rust:
+    - Overview: "synarkos_rs/overview.md"
+    - Agents: "synarkos_rs/agents.md"
+
+  - Contributors:
+    - Overview: "contributors/main.md"
+    - Environment Setup: "contributors/environment_setup.md"
+    - Bounty Program: "governance/bounty_program.md"
+    
+    - Development Guides:
+      - Code Style Guide & Best Practices: "synarkos/framework/code_cleanliness.md"
+      - Adding Tests: "synarkos/framework/test.md"
+      - Adding Documentation: "contributors/docs.md"
+      - New Tools & Plugins: "contributors/tools.md"
+    
+    - Architecture & Design:
+      - Understanding SynarkOS Architecture: "synarkos/concept/framework_architecture.md"
+      - Development Philosophy & Principles: "synarkos/concept/philosophy.md"
