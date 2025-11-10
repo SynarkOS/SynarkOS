@@ -57,7 +57,7 @@ cd blockchain && npx hardhat test
 ## Security
 
 ### Vulnerability Reporting
-Please report security vulnerabilities to: **synarkos@example.com**
+Please report security vulnerabilities to: **synarkos@eproton.me**
 
 - Do NOT open public issues for security vulnerabilities
 - Include detailed reproduction steps
