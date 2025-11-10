@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  synarkos:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: synarkos:latest
+    container_name: synarkos-container
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+      # Add your API keys here or use .env file
+      # - OPENAI_API_KEY=${OPENAI_API_KEY}
+      # - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      # - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+    volumes:
+      - .:/app
+      - ./data:/app/data
+      - ./models:/app/models
+    working_dir: /app
+    command: python test_docker.py
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import synarkos; print('Health check passed')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  synarkos-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: synarkos:dev
+    container_name: synarkos-dev-container
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+    volumes:
+      - .:/app
+      - ./data:/app/data
+      - ./models:/app/models
+    working_dir: /app
+    command: bash
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+
+  synarkos-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: synarkos:api
+    container_name: synarkos-api-container
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - "8000:8000"
+    command: python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+    restart: unless-stopped
+    depends_on:
+      - synarkos
+
+networks:
+  default:
+    name: synarkos-network 
