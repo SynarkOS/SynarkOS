@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  ipfs:
+    image: ipfs/kubo:latest
+    container_name: synarkos-ipfs
+    ports:
+      - "5001:5001"
+      - "8080:8080"
+    volumes:
+      - ipfs-data:/data/ipfs
+    restart: unless-stopped
+
+  blockchain:
+    image: trufflesuite/ganache:latest
+    container_name: synarkos-blockchain
+    ports:
+      - "8545:8545"
+    command: --wallet.deterministic --database.dbPath /data
+    volumes:
+      - blockchain-data:/data
+    restart: unless-stopped
+
+  training-node:
+    build: 
+      context: ../nodes/node_client
+      dockerfile: Dockerfile
+    container_name: synarkos-node
+    depends_on:
+      - blockchain
+      - ipfs
+    environment:
+      - RPC_URL=http://blockchain:8545
+      - IPFS_URL=http://ipfs:5001
+    restart: unless-stopped
+
+volumes:
+  ipfs-data:
+  blockchain-data:
